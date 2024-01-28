@@ -1,0 +1,28 @@
+/* public/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: aqua;
+  }
+  
+  h1 {
+    color: blue;
+  } 
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  video {
+    width: 100%;
+  }
+  

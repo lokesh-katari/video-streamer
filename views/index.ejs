@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Upload</title>
+  <link rel="stylesheet" href="../public/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="m-8">
+
+    <h1 class="text-2xl">Video Streaming App</h1>
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-8">
+    <a href="/videos">All Videos</a>
+    </button>
+
+<br>
+  <h1 class=" text-2xl my-6">Video Upload</h1>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="video" accept="video/*" class="" required>
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-8">Upload Video</button>
+  </form>
+</body>
+</html>
