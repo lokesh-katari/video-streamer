@@ -3,7 +3,8 @@ const app = express();
 const port = 3000;
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
-const mongoose = require('mongoose');       
+const mongoose = require('mongoose');  
+require('dotenv').config();     
 cloudinary.config({ 
   cloud_name: 'dp0i92tjf', 
   api_key: '227668771945544', 
@@ -12,7 +13,7 @@ cloudinary.config({
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
-mongoose.connect('mongodb+srv://lokeshkatari921:GaIpVOppyLAOe6TU@cluster0.3edicq2.mongodb.net/?retryWrites=true&w=majority').then(()=>{ 
+mongoose.connect(process.env.MONGO_URI).then(()=>{ 
     console.log(" DB connection successfull ");
 } );
 
@@ -37,7 +38,7 @@ app.get('/', (req, res) => {
 
 app.post('/upload', upload.single('video'), (req, res) => {
     // Upload video to Cloudinary
-    cloudinary.uploader.upload_stream({ resource_type: 'video' }, (error, result) => {
+    cloudinary.uploader.upload_stream({ resource_type: 'video' }, async (error, result) => {
       if (error) {
         console.error(error);
         res.status(500).send('Error uploading video');
@@ -48,7 +49,8 @@ app.post('/upload', upload.single('video'), (req, res) => {
           url: result.secure_url
         });
   
-        newVideo.save().then(() => res.send('Video saved to MongoDB'));
+       let video = newVideo.save();
+       res.render('success',{video})
       }
     }).end(req.file.buffer);
   });
@@ -64,7 +66,7 @@ app.post('/upload', upload.single('video'), (req, res) => {
     }
   });
 
-  
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
     }

@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Upload Success</title>
 </head>
+<script src="https://cdn.tailwindcss.com"></script>
 <body>
   <h1>Upload Success</h1>
   <p>Video uploaded successfully!</p>
   <p>Video URL: <%= video.secure_url %></p>
+    <p class="my-8">Video Name: <%= video.original_filename %></p>
+    <a href="/videos"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-8">All Videos</a>
 </body>
 </html>
